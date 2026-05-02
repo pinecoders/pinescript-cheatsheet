@@ -12,7 +12,7 @@
     "build:postbuild": "pnpm run fix",
     "build:bundle-viz": "vite-bundle-visualizer",
     "build:clean": "rimraf dist build .turbo",
-    "build:nuke": "build:clean && rimraf pnpm-lock.yaml node_modules && pnpm i",
+    "build:nuke": "pnpm run build:clean && rimraf pnpm-lock.yaml node_modules && pnpm i",
     "preview": "vite preview",
     "update": "pnpm update --latest",
     "// --- CHECKING & FORMATTING & LINTING ---": "",
