@@ -1,10 +1,12 @@
+import type { CategoryValue } from '@/constants/categories.mjs';
+
 export interface ICheatsheetEntity {
 	name: string;
 	desc: string;
 }
 
 export type TCheatsheetData = Record<string, ICheatsheetEntity[]>;
-export type TCheatsheetCategoryEntry = [string, ICheatsheetEntity[]];
+export type TCheatsheetCategoryEntry = [CategoryValue, ICheatsheetEntity[]];
 
 export type TCheatsheetCategory =
 	| 'Types'

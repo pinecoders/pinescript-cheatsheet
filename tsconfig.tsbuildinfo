@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/card/card.tsx","./src/components/cheatsheet/cheatsheet.tsx","./src/constants/variant-classes.ts","./src/types/categories-mjs.d.ts","./src/types/cheatsheet.ts","./src/types/tailwind-color.ts","./playwright.config.ts"],"version":"6.0.3"}

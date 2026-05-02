@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-
 import { Card } from '@/components/card/card';
 import { CATEGORY_COLUMNS, NUMBER_OF_COLUMNS } from '@/constants/categories.mjs';
+import type { CategoryValue } from '@/constants/categories.mjs';
 import { VARIANT_CLASSES } from '@/constants/variant-classes';
 import cheatsheetData from '@/data/v6-cheatsheet.json';
 import type { TCheatsheetCategoryEntry } from '@/types/cheatsheet';
@@ -45,10 +45,8 @@ const GRID_CLASS: Record<number, string> =
 		12: 'md:grid-cols-12',
 	}[NUMBER_OF_COLUMNS as number] || 'md:grid-cols-3';
 
-/**
- * Builds a stable mapping of each category to its color variant,
- * using the same logic as the column card rendering.
- */
+// Builds a stable mapping of each category to its color variant,
+// using the same logic as the column card rendering.
 function buildCategoryColorMap(
 	categoryEntries: TCheatsheetCategoryEntry[]
 ): Map<string, TTailwindColor> {
@@ -56,7 +54,7 @@ function buildCategoryColorMap(
 
 	for (let colIndex = 0; colIndex < NUMBER_OF_COLUMNS; colIndex++) {
 		const colEntries = categoryEntries.filter(
-			([category]) => CATEGORY_COLUMNS[category] === colIndex
+			([category]) => CATEGORY_COLUMNS[category as CategoryValue] === colIndex
 		);
 		colEntries.forEach(([category], index) => {
 			map.set(category, colorVariantByIndex(colIndex + index) as TTailwindColor);
@@ -122,7 +120,7 @@ function renderColumns(categoryEntries: TCheatsheetCategoryEntry[]) {
 				<div className="flex flex-col" key={index}>
 					{renderColumnCards(
 						categoryEntries.filter(
-							([category]) => CATEGORY_COLUMNS[category] === index
+							([category]) => CATEGORY_COLUMNS[category as CategoryValue] === index
 						),
 						index
 					)}
